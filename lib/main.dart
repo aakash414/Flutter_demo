@@ -13,13 +13,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.red,
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  String name = "Flutter Project";
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +30,38 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.indigo,
         ),
-        body: const SafeArea(
-          child: Center(
-            child: Text(
-              'Flutter Project',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.w500),
-            ),
-          ),
-        ));
+        body: SafeArea(
+          child: Container(
+              // color: Colors.blue,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    name,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text("Click Me"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text("Click Me"),
+                  ),
+                ],
+              )),
+        )); //widget
   }
 }
