@@ -18,50 +18,49 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  String name = "Flutter Project";
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final _textController = TextEditingController();
+  String _displayText = 'Text will be displayed here!';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.orange,
-        appBar: AppBar(
-          backgroundColor: Colors.indigo,
-        ),
-        body: SafeArea(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(20),
           child: Container(
-              // color: Colors.blue,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 2,
+            color: Colors.yellow,
+            child: Column(
+              children: [
+                TextField(
+                  controller: _textController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter your name',
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("Click Me"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Click Me"),
-                  ),
-                ],
-              )),
-        )); //widget
+                ElevatedButton(
+                    onPressed: () {
+                      //Get Data
+                      print(_textController.text);
+                      setState(() {
+                        _displayText = _textController.text;
+                      });
+                    },
+                    child: Text('Click Me!')),
+                Text(_displayText),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
