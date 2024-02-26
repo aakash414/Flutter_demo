@@ -13,18 +13,28 @@ class _ScreenHomeState extends State<ScreenHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(_counter.toString()),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print(_counter);
-          setState(() {
-            _counter++;
-          });
-        },
-        child: Icon(Icons.add),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Home'),
+        ),
+        body: SafeArea(
+          child: ListView.separated(
+            itemBuilder: (ctx, index) {
+              return ListTile(
+                title: Text('Person $index'),
+                subtitle: Text('Message $index'),
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.green,
+                  child: Text('$index'),
+                ),
+                trailing: Text('1$index:00 PM'),
+              );
+            },
+            separatorBuilder: (ctx, index) {
+              return Divider();
+            },
+            itemCount: 50,
+          ),
+        ));
   }
 }
