@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:taskaroo/screen_1.dart';
-import 'package:taskaroo/screen_2.dart';
+import 'package:taskaroo/screen/splash.dart';
 
-void main(List<String> args) {
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Login Sample',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.blue,
       ),
-      home: ScreenOne(),
-      routes: {
-        'screen_1': (ctx) => ScreenOne(),
-        'screen_2': (ctx) => ScreenTwo(
-              name: '',
-            ),
-      },
+      home: ScreenSplash(),
     );
   }
 }
